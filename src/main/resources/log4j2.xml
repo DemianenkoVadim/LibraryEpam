@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration>
+    <Properties>
+        <Property name="property_console">%d{HH:mm:ss} %-5level %logger{1} - %msg%n</Property>
+        <Property name="property_file">%d{yyyy-MM-dd HH:mm:ss} %-5level [%t] %logger{6} - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${property_console}"/>
+        </Console>
+
+        <File name="File" fileName="logs/library-${date:yyyy-MM-ddHHmmssSSS}.log"
+              append="true">
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+                </PatternLayout>
+            </File>
+        </Appenders>
+
+    <Loggers>
+
+        <Root level="debug">
+            <AppenderRef ref="File"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
